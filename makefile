@@ -29,3 +29,7 @@ total_lines:
 
 total_words:
 	cat pg*.txt | wc -w
+
+install_requirements:
+	python3 -m venv env; . env/bin/activate; pip install --upgrade pip; pip install -r requirements.txt
+
