@@ -4,9 +4,11 @@ def clean_text(a_text):
     print("Checking that input to clean_text() is string...")
     assert type(a_text) is str
     print("passed")
+    
     lower_case_a_text = a_text.lower()
     ## Remove anything that is not a lowercase letter, number, or white space character
     lower_case_a_text = re.sub(r"[^a-z0-9\s]","",lower_case_a_text)
+    
     return(lower_case_a_text)
 
 
@@ -14,13 +16,16 @@ def tokenize(a_text):
     print("Checking that input to tokenize() is string...")
     assert type(a_text) is str
     print("passed")
+    
     a_text_tokenized = re.split(r"\s+",a_text)
+    
     return(a_text_tokenized)
 
 def count_words(a_text):
     print("Checking that input to counts_words() is string...")
     assert type(a_text) is str
     print("passed")
+    
     clean_a_text = clean_text(a_text)
     tokenized_a_text = tokenize(clean_a_text)
     
