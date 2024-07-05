@@ -17,7 +17,7 @@ def tokenize(a_text):
     assert type(a_text) is str
     print("passed")
     
-    a_text_tokenized = re.split(r"\s+",a_text)
+    a_text_tokenized = re.split(r"\s+",a_text.strip())
     
     return(a_text_tokenized)
 
