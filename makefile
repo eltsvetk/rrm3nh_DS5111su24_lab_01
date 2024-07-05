@@ -33,3 +33,5 @@ total_words:
 install_requirements:
 	python3 -m venv env; . env/bin/activate; pip install --upgrade pip; pip install -r requirements.txt
 
+test:
+	pytest -vvx tests/
