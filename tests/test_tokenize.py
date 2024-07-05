@@ -1,6 +1,7 @@
 import pytest
 import re
 from subprocess import check_output
+from os import system
 from week_3_lab import tokenize
 
 @pytest.fixture
@@ -88,6 +89,7 @@ def test_tokenize_all_english_correct_num_words():
     # When I pass _text_ to the `tokenize()` function
     # I should get a list that contains all words in the __text__ as a return
     tokenize_text = tokenize(read_all_books())
+    system("cat pg17192.txt pg932.txt pg1063.txt pg10031.txt > pg_17192_932_1063_10031.txt")
     bash_wc = int(check_output(["wc", "-w", "pg_17192_932_1063_10031.txt"]).split()[0])
     assert len(tokenize_text) == bash_wc, f"tokenize failed to return same number of words as bash command wc on sample file with all English texts"
 
