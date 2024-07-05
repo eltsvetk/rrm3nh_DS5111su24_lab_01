@@ -12,6 +12,8 @@ get_texts:
 	wget https://www.gutenberg.org/cache/epub/55175/pg55175.txt
 	wget https://www.gutenberg.org/cache/epub/37397/pg37397.txt
 	wget https://www.gutenberg.org/cache/epub/48383/pg48383.txt
+	wget https://www.gutenberg.org/cache/epub/1063/pg1063.txt
+	wget https://www.gutenberg.org/cache/epub/10031/pg10031.txt 	
 
 raven_line_count:
 	cat pg17192.txt | wc -l
@@ -37,4 +39,5 @@ env:
 	python3 -m venv env; . env/bin/activate; pip install --upgrade pip; pip install -r requirements.txt
 
 test:
+	make get_texts
 	pytest -vvx tests/
