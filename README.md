@@ -37,3 +37,11 @@ We test the tokenize function by the following tests:
 * There is 1 test on all titles (English and French) and testing if we return a list representing continuous blocks of texts.
 * More fancy: There is 1 test on all English titles and testing if we return the same number of words as bash command wc on all English texts 
 * There is 1 test on the French version that is testing if we return a list representing continuous blocks of texts. 
+
+
+
+
+
+
+
+[![Python package](https://github.com/eltsvetk/rrm3nh_DS5111su24_lab_01/actions/workflows/validations.yml/badge.svg?branch=WEEK-05%2Fgithub_automation)](https://github.com/eltsvetk/rrm3nh_DS5111su24_lab_01/actions/workflows/validations.yml)
