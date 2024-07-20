@@ -60,10 +60,10 @@ def test_count_words_raven_1_line_is_dict_count_that():
 @pytest.mark.xfail
 def test_count_words_raven_1_line_with_count_punctuation():
     # Given a string _text_ of text with words
-    # When I pass _text_ to the `tokenize()` function
-    # I should get a list that counts words and punctuation for ending sentences or separating parts of a sentence (".",",",etc.) -- not currently implemented
+    # When I pass _text_ to the `count_words()` function
+    # I should get a dictionary that counts words and punctuation for ending sentences or separating parts of a sentence (".",",",etc.) -- not currently implemented
     text = "But the Raven, sitting lonely on the placid bust, spoke only That one word, as if his soul in that one word he did outpour."
-    tokenize_text = tokenize(text)
+    test_count = count_words(text)
     assert test_count["that"] == 2, f"count_words failed to count correct count of \'that\' in sample text: {text}"
     assert test_count[","] == 3, f"count_words failed to count correct count of  \',\' in sample text: {text}"
     assert test_count["."] == 1, f"count_words failed to count  correct count of  \'.\' in sample text: {text}"
