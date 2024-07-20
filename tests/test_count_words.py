@@ -99,4 +99,16 @@ def test_count_words_french_1_line_dict():
 
     text = """_Mais le Corbeau, perché solitairement sur ce buste placide, parla ce seul mot comme si, son âme, en ce seul mot, il la répandait. Je neproférai donc rien de plus: il n'agita donc pas de plume--jusqu'à ce que je fis à peine davantage que marmotter «D'autres amis déjà ont pris leur vol--demain il me laissera comme mes Espérances déjà ont pris leur vol.» Alors l'oiseau dit: «Jamais plus.»_"""
     test_count = count_words(text)
-    assert isinstance(test_count, dict), f"count_words failed to return dict on sample text: {text}"                         
+    assert isinstance(test_count, dict), f"count_words failed to return dict on sample text: {text}"
+
+@pytest.mark.integration
+def test_count_words_complex_punctuation():
+    # Given a string _text_ of text with words
+    # When I pass _text_ to the `count_words()` function
+    # I should get a dictionary that counts words
+    # Note that count_words() function cleans and tokenizes a string using the relevant functions, so each test of count_words() is an integration test
+    text = "But!the,Raven,.sitting lonely on,the placid bust,--spoke only That one word,?as if his soul in,that one word he did outpour."
+    test_count = count_words(text)
+    assert test_count["that"] == 2, f"count_words failed to correctly count of \'that\' in sample text: {text}"
+    assert "-" not in test_count.keys(), f"clean_text failed to correctly clean the text supplied to count_words in sample text: {text}"
+    assert test_count["the"] == 2, f"count_words failed to correctly count \'the\' in sample text: {text}"
