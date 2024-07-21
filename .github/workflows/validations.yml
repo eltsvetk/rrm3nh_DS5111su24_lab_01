@@ -1,7 +1,6 @@
 name: Python package
 
 on:
-  push:
   workflow_dispatch:
     inputs:
       testType:
@@ -12,6 +11,9 @@ on:
         options:
           - non
           - integration
+  push:
+    branches:
+      WEEK-05/github_automation
 jobs:
   build:
 
