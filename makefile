@@ -40,6 +40,10 @@ env:
 
 test:
 	make get_texts
+	pytest -vvx tests/
+
+test_non:
+	make get_texts
 	pytest -m "not integration" -vvx tests/
 
 test_integration:

@@ -4,13 +4,13 @@ on:
   push:
   workflow_dispatch:
     inputs:
-      integ:
+      testType:
         description: 'Specify test type'
         required: true
-        default: 'test'
+        default: 'test_non'
         type: choice
         options:
-          - test
+          - test_non
           - test_integration
 jobs:
   build:
@@ -32,6 +32,6 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Test with pytest
         run: |
-          make ${{ github.event.inputs.integ }}
+          make ${{ github.event.inputs.testType }}
           #make test
           #make test_integration
