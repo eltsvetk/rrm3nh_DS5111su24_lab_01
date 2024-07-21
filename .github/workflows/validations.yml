@@ -12,8 +12,7 @@ on:
           - non
           - integration
   push:
-    branches:
-      WEEK-05/github_automation
+
 jobs:
   build:
 
