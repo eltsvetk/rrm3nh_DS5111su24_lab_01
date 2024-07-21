@@ -1,0 +1,39 @@
+name: Python package
+
+on:
+  workflow_dispatch:
+    inputs:
+      testType:
+        description: 'Specify test type'
+        required: true
+        default: 'non'
+        type: choice
+        options:
+          - non
+          - integration
+  push:
+    branches:
+      WEEK-05/github_automation
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8"]
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          make env
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Test with pytest
+        run: |
+          make ${{ github.event.inputs.testType }}
+          #make test
+          #make test_integration
