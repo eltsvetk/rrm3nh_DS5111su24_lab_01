@@ -143,3 +143,14 @@ def test_clean_text_french_1_line_is_str_os():
     test_clean = clean_text(text)
     assert isinstance(test_clean, str), f"clean_text failed to return string (str) on sample text: {text}"
 
+
+def test_clean_text_raven_1_line_same_length():
+    # Given a string _text_ of text with words
+    # When I pass _text_ to the `clean_text()` function
+    # I should get a string all lowercase and no punctuation
+    if sys.version_info[0:2] != (3,8):
+        pytest.xfail("This should only be run on python 3.8 (because reasons)")
+    else:
+        text = "But the Raven, sitting lonely on the placid bust, spoke only That one word, as if his soul in that one word he did outpour."
+        test_clean = clean_text(text)
+        assert len(text) == len(test_clean), f"clean_text failed to return a string of the same length, with punctuation replaced by white space"

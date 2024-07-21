@@ -102,8 +102,23 @@ def test_count_words_french_1_line_dict():
     test_count = count_words(text)
     assert isinstance(test_count, dict), f"count_words failed to return dict on sample text: {text}"
 
+
+
+def test_count_words_french_1_line_dautres():
+    # Given a string _text_ of text with words
+    # When I pass _text_ to the `count_words()` function
+    # I should get a dictionary with the counts of each unique word (not case sensitive)
+
+    text = """_Mais le Corbeau, perché solitairement sur ce buste placide, parla ce seul mot comme si, son âme, en ce seul mot, il la répandait. Je neproférai donc rien de plus: il n'agita donc pas de plume--jusqu'à ce que je fis à peine davantage que marmotter «D'autres amis déjà ont pris leur vol--demain il me laissera comme mes Espérances déjà ont pris leur vol.» Alors l'oiseau dit: «Jamais plus.»_"""
+    cleaned_text = clean_text(text)
+    test_count = count_words(cleaned_text)
+    assert "D\'autres" in test_count.keys(), f"count_words failed to return dict with D\'autres as key for sample text: {text}"
+
+
+
+
 @pytest.mark.integration
-def test_count_words_complex_punctuation():
+def test_count_words_complex_punctuation_common_words():
     # Given a string _text_ of text with words
     # When I pass _text_ to the `clean_text()` followed by the `count_words()` function
     # I should get a dictionary that counts unique words (not case sensitive)
@@ -112,5 +127,16 @@ def test_count_words_complex_punctuation():
     cleaned_text = clean_text(text)
     test_count = count_words(cleaned_text)
     assert test_count["that"] == 2, f"count_words failed to correctly count of \'that\' in sample text: {text}"
-    assert "-" not in test_count.keys(), f"clean_text failed to correctly clean the text supplied to count_words in sample text: {text}"
     assert test_count["the"] == 2, f"count_words failed to correctly count \'the\' in sample text: {text}"
+
+
+@pytest.mark.integration
+def test_count_words_complex_punctuation_ignores_punctuation():
+    # Given a string _text_ of text with words
+    # When I pass _text_ to the `clean_text()` followed by the `count_words()` function
+    # I should get a dictionary that counts unique words (not case sensitive) and ignores punctuation
+    # Note that count_words() function tokenizes a string using the relevant functions, so each test of count_words() is an integration test
+    text = "But!the,Raven,.sitting lonely on,the placid bust,--spoke only That one word,?as if his soul in,that one word he did outpour."
+    cleaned_text = clean_text(text)
+    test_count = count_words(cleaned_text)
+    assert "-" not in test_count.keys(), f"clean_text failed to correctly clean the text supplied to count_words in sample text: {text}"
