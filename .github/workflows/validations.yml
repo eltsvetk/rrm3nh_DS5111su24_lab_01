@@ -32,6 +32,6 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Test with pytest
         run: |
-          make ${{ github.event.input.testType }}
+          make ${{ github.event.inputs.testType }}
           #make test
           #make test_integration
