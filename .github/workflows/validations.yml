@@ -2,14 +2,14 @@ name: Python package
 
 on:
   push:
-    workflow_dispatch:
-      inputs:
-        testType:
-          description: 'Type of test to run'
-          required: true
-          default: 'test'
-          type: choice
-          options:
+  workflow_dispatch:
+    inputs:
+      testType:
+        description: 'Type of test to run'
+        required: true
+        default: 'test'
+        type: choice
+        options:
           - test
           - test_integration
 jobs:
