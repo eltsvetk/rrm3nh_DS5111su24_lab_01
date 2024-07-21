@@ -7,7 +7,7 @@ def clean_text(a_text):
     
     lower_case_a_text = a_text.lower()
     ## Remove anything that is not a lowercase letter, number, or white space character
-    lower_case_a_text = re.sub(r"[^a-z0-9\s]","",lower_case_a_text)
+    lower_case_a_text = re.sub(r"[^a-z0-9\s]"," ",lower_case_a_text)
     
     return(lower_case_a_text)
 
@@ -26,8 +26,8 @@ def count_words(a_text):
     assert type(a_text) is str
     print("passed")
     
-    clean_a_text = clean_text(a_text)
-    tokenized_a_text = tokenize(clean_a_text)
+    #clean_a_text = clean_text(a_text)
+    tokenized_a_text = tokenize(a_text)
     
     word_count_dict = {}
     for word in tokenized_a_text:
