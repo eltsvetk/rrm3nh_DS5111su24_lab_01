@@ -68,7 +68,7 @@ def test_count_words_raven_1_line_with_count_punctuation():
     assert test_count[","] == 3, f"count_words failed to count correct count of  \',\' in sample text: {text}"
     assert test_count["."] == 1, f"count_words failed to count  correct count of  \'.\' in sample text: {text}"
 
-@pytest.mark.xfail
+
 def test_count_words_raven_count_that(read_raven):
     # Given a string _text_ of text with words
     # When I pass _text_ to the `count_words()` function
