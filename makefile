@@ -42,11 +42,11 @@ test:
 	make get_texts
 	pytest -vvx tests/
 
-test_non:
+non:
 	make get_texts
 	pytest -m "not integration" -vvx tests/
 
-test_integration:
+integration:
 	make get_texts
 	pytest -m integration -vvx tests/
 

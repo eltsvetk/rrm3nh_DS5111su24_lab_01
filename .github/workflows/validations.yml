@@ -7,11 +7,11 @@ on:
       testType:
         description: 'Specify test type'
         required: true
-        default: 'test_non'
+        default: 'non'
         type: choice
         options:
-          - test_non
-          - test_integration
+          - non
+          - integration
 jobs:
   build:
 
