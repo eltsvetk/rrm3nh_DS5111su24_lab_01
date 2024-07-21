@@ -3,14 +3,22 @@ name: Python package
 on:
   push:
   workflow_dispatch:
-
+    inputs:
+      testType:
+        description: 'Type of test to run'
+        required: true
+        default: 'test'
+        type: choice
+        options:
+        - test
+        - test_integration
 jobs:
   build:
 
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.7"]
+        python-version: ["3.8"]
 
     steps:
       - uses: actions/checkout@v4
@@ -24,5 +32,4 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Test with pytest
         run: |
-          make test 
-          make test_integration
+          make ${{ github.event.input.testType }}
