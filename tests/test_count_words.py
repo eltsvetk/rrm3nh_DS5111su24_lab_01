@@ -43,10 +43,11 @@ def test_count_words_raven_1_line_is_dict():
 def test_count_words_raven_1_line_is_dict_unique_words():
     # Given a string _text_ of text with words
     # When I pass _text_ to the `count_words()` function
-    # I should get a dictionary with the length representing the number of unique words (not case sensitive)
+    # I should get a dictionary with the length representing the number of unique words (case sensitive, will treat punctuation after word as part of word)
+    # Note will need to clean text to truly get unique words
     text = "But the Raven, sitting lonely on the placid bust, spoke only That one word, as if his soul in that one word he did outpour."
     test_count = count_words(text)
-    assert len(test_count) == 21, f"count_words failed to identify unique words in sample text: {text}"
+    assert len(test_count) == 23, f"count_words failed to identify unique words in sample text: {text}"
 
 def test_count_words_raven_1_line_is_dict_count_that():
     # Given a string _text_ of text with words
@@ -55,7 +56,7 @@ def test_count_words_raven_1_line_is_dict_count_that():
     
     text = "But the Raven, sitting lonely on the placid bust, spoke only That one word, as if his soul in that one word he did outpour."
     test_count = count_words(text)
-    assert test_count["that"] == 2, f"count_words failed to correct count \'that\' in sample text: {text}"
+    assert test_count["that"] == 1, f"count_words failed to correct count \'that\' in sample text: {text}"
     
 @pytest.mark.xfail
 def test_count_words_raven_1_line_with_count_punctuation():
@@ -68,7 +69,7 @@ def test_count_words_raven_1_line_with_count_punctuation():
     assert test_count[","] == 3, f"count_words failed to count correct count of  \',\' in sample text: {text}"
     assert test_count["."] == 1, f"count_words failed to count  correct count of  \'.\' in sample text: {text}"
 
-@pytest.mark.xfail
+
 def test_count_words_raven_count_that(read_raven):
     # Given a string _text_ of text with words
     # When I pass _text_ to the `count_words()` function
@@ -104,11 +105,12 @@ def test_count_words_french_1_line_dict():
 @pytest.mark.integration
 def test_count_words_complex_punctuation():
     # Given a string _text_ of text with words
-    # When I pass _text_ to the `count_words()` function
-    # I should get a dictionary that counts words
-    # Note that count_words() function cleans and tokenizes a string using the relevant functions, so each test of count_words() is an integration test
+    # When I pass _text_ to the `clean_text()` followed by the `count_words()` function
+    # I should get a dictionary that counts unique words (not case sensitive)
+    # Note that count_words() function tokenizes a string using the relevant functions, so each test of count_words() is an integration test
     text = "But!the,Raven,.sitting lonely on,the placid bust,--spoke only That one word,?as if his soul in,that one word he did outpour."
-    test_count = count_words(text)
+    cleaned_text = clean_text(text)
+    test_count = count_words(cleaned_text)
     assert test_count["that"] == 2, f"count_words failed to correctly count of \'that\' in sample text: {text}"
     assert "-" not in test_count.keys(), f"clean_text failed to correctly clean the text supplied to count_words in sample text: {text}"
     assert test_count["the"] == 2, f"count_words failed to correctly count \'the\' in sample text: {text}"
