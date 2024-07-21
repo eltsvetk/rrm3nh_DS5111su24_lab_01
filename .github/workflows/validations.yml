@@ -1,4 +1,4 @@
-name: Python package
+name: Workflow test
 
 on:
   workflow_dispatch:
