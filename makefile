@@ -36,17 +36,31 @@ install_requirements:
 	python3 -m venv env; . env/bin/activate; pip install --upgrade pip; pip install -r requirements.txt
 
 env:
-	python3 -m venv env; . env/bin/activate; pip install --upgrade pip; pip install -r requirements.txt
+	python3 -m venv env; . env/bin/activate; pip install --upgrade pip; pip install -r requirements.txt; python3 -m build
+
+.PHONY: clean
+clean:
+	rm pg*.txt*
+
+
+lint:
+	pylint src/pkg_rrm3nh/example.py
 
 test:
+	make clean
 	make get_texts
+	make lint
 	pytest -vvx tests/
 
 non:
+	make clean
 	make get_texts
+	make lint
 	pytest -m "not integration" -vvx tests/
 
 integration:
+	make clean
 	make get_texts
+	make lint
 	pytest -m integration -vvx tests/
 
