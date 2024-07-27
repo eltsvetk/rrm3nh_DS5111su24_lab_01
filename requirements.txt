@@ -10,3 +10,4 @@ pluggy == 1.5.0
 pylint == 3.2.3
 pytest == 8.2.2
 tomlkit == 0.12.5
+build
