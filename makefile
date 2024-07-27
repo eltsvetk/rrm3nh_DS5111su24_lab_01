@@ -42,24 +42,20 @@ env:
 clean:
 	rm pg*.txt*
 
-
 lint:
 	pylint src/pkg_rrm3nh/example.py
 
 test:
-	make clean
 	make get_texts
 	make lint
 	pytest -vvx tests/
 
 non:
-	make clean
 	make get_texts
 	make lint
 	pytest -m "not integration" -vvx tests/
 
 integration:
-	make clean
 	make get_texts
 	make lint
 	pytest -m integration -vvx tests/
