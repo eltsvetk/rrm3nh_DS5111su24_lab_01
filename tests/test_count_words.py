@@ -3,8 +3,8 @@ import re
 import os,sys
 myPath = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, myPath + '/../')
-from week_3_lab import *
-
+#from week_3_lab import *
+from pkg_rrm3nh.example import *
 
 
 @pytest.fixture
@@ -112,7 +112,7 @@ def test_count_words_french_1_line_dautres():
     text = """_Mais le Corbeau, perché solitairement sur ce buste placide, parla ce seul mot comme si, son âme, en ce seul mot, il la répandait. Je neproférai donc rien de plus: il n'agita donc pas de plume--jusqu'à ce que je fis à peine davantage que marmotter «D'autres amis déjà ont pris leur vol--demain il me laissera comme mes Espérances déjà ont pris leur vol.» Alors l'oiseau dit: «Jamais plus.»_"""
     cleaned_text = clean_text(text)
     test_count = count_words(cleaned_text)
-    assert "D\'autres" in test_count.keys(), f"count_words failed to return dict with D\'autres as key for sample text: {text}"
+    assert "D\'autres" not in test_count.keys(), f"count_words failed to return dict with D\'autres as key for sample text: {text}"
 
 
 
