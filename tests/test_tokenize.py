@@ -6,7 +6,7 @@ import os,sys
 myPath = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, myPath + '/../')
 #from week_3_lab import tokenize
-from pkg_rrm3nh.example import tokenize
+from src.pkg_rrm3nh.example import tokenize
 
 
 @pytest.fixture

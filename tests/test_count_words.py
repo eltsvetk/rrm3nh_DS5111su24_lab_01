@@ -4,7 +4,7 @@ import os,sys
 myPath = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, myPath + '/../')
 #from week_3_lab import *
-from pkg_rrm3nh.example import *
+from src.pkg_rrm3nh.example import *
 
 
 @pytest.fixture
